@@ -18,15 +18,15 @@ private const val ARG_PARAM2 = "param2"
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [PrescriptionCalcFragment.OnFragmentInteractionListener] interface
+ * [ThirdFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [PrescriptionCalcFragment.newInstance] factory method to
+ * Use the [ThirdFragment.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
-class PrescriptionCalcFragment : Fragment(), AppFragment {
+class ThirdFragment : Fragment(), AppFragment {
 
-    override var fragmentId: Int = R.id.navigation_prescription
+    override var fragmentId: Int = R.id.navigation_third
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -44,7 +44,7 @@ class PrescriptionCalcFragment : Fragment(), AppFragment {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_prescription_calc, container, false)
+        return inflater.inflate(R.layout.fragment_third, container, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -87,8 +87,8 @@ class PrescriptionCalcFragment : Fragment(), AppFragment {
         var sharedPreferences: SharedPreferences? = null
 
         @JvmStatic
-        fun newInstance(sharedPreferences: SharedPreferences): PrescriptionCalcFragment{
-            val fragment = PrescriptionCalcFragment()
+        fun newInstance(sharedPreferences: SharedPreferences): ThirdFragment{
+            val fragment = ThirdFragment()
             this.sharedPreferences = sharedPreferences
             return fragment
         }

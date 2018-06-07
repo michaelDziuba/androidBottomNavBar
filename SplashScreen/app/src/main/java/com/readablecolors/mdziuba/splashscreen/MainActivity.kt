@@ -10,9 +10,9 @@ import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),
-        PrescriptionCalcFragment.OnFragmentInteractionListener,
-        ReverseCalcFragment.OnFragmentInteractionListener,
-        AboutFragment.OnFragmentInteractionListener {
+        FirstFragment.OnFragmentInteractionListener,
+        SecondFragment.OnFragmentInteractionListener,
+        ThirdFragment.OnFragmentInteractionListener {
 
 
     companion object {
@@ -23,26 +23,26 @@ class MainActivity : AppCompatActivity(),
     var sharedPref: SharedPreferences? = null
 
 
-    private var fragmentId = R.id.navigation_prescription
+    private var fragmentId = R.id.navigation_first
 
-    private var prescriptionCalcFragment: PrescriptionCalcFragment? = null
-    private var reverseCalcFragment: ReverseCalcFragment? = null
-    private var aboutFragment: AboutFragment? = null
+    private var firstFragment: FirstFragment? = null
+    private var secondFragment: SecondFragment? = null
+    private var thirdFragment: ThirdFragment? = null
 
 
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_prescription -> {
-                replaceFragment(prescriptionCalcFragment!!)
+            R.id.navigation_first -> {
+                replaceFragment(firstFragment!!)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_reverse -> {
-                replaceFragment(reverseCalcFragment!!)
+            R.id.navigation_second -> {
+                replaceFragment(secondFragment!!)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_about -> {
-                replaceFragment(aboutFragment!!)
+            R.id.navigation_third -> {
+                replaceFragment(thirdFragment!!)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(),
 
         this.sharedPref = this.getSharedPreferences(MainActivity.MyAppPreferences, Context.MODE_PRIVATE)
 
-        this.fragmentId = sharedPref!!.getInt(MainActivity.fragmentId, R.id.navigation_prescription)
+        this.fragmentId = sharedPref!!.getInt(MainActivity.fragmentId, R.id.navigation_first)
         this.generateFragments()
 
         navigation.selectedItemId = fragmentId
@@ -66,16 +66,16 @@ class MainActivity : AppCompatActivity(),
 
     override fun onDestroy() {
         super.onDestroy()
-        prescriptionCalcFragment = null
-        reverseCalcFragment = null
-        aboutFragment = null
+        firstFragment = null
+        secondFragment = null
+        thirdFragment = null
     }
 
 
 
 
     /**
-     * Replaces shown fragment with paramenter specified fragment
+     * Replaces shown fragment with parameter specified fragment
      * @param fragment the fragment to replace currently showing fragment
      */
     fun replaceFragment(fragment: AppFragment) {
@@ -94,9 +94,9 @@ class MainActivity : AppCompatActivity(),
      */
     private fun generateFragments(){
 
-        prescriptionCalcFragment = PrescriptionCalcFragment.newInstance(sharedPref!!)
-        reverseCalcFragment = ReverseCalcFragment.newInstance(sharedPref!!)
-        aboutFragment = AboutFragment.newInstance(sharedPref!!)
+        firstFragment = FirstFragment.newInstance(sharedPref!!)
+        secondFragment = SecondFragment.newInstance(sharedPref!!)
+        thirdFragment = ThirdFragment.newInstance(sharedPref!!)
 
     }
 
